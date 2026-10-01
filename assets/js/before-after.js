@@ -1,6 +1,7 @@
 /**
  * TypesetOK — Before / After Accessible Drag Slider
- * Compares Legacy/Raw Word Processor Output vs TypesetOK Knuth-Plass Typesetting.
+ * Compares Legacy Word Processor Output vs TypesetOK Knuth-Plass Typesetting.
+ * Fully supports RTL & LTR modes, touch-action pan-y, presets, and keyboard navigation.
  */
 document.addEventListener('DOMContentLoaded', () => {
   const container = document.getElementById('comparisonContainer');
@@ -10,31 +11,59 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!container || !afterLayer || !handle) return;
 
   let isDragging = false;
-  let currentPercentage = 50; // default 50%
+  let currentPercentage = 50;
 
-  function setSliderPosition(percentage) {
-    // Clamp between 5% and 95%
-    percentage = Math.max(5, Math.min(95, percentage));
+  function setSliderPosition(percentage, smooth = false) {
+    percentage = Math.max(3, Math.min(97, percentage));
     currentPercentage = percentage;
 
-    // After layer width (from right to left in RTL)
-    afterLayer.style.width = `${percentage}%`;
-    handle.style.right = `${percentage}%`;
-    handle.style.left = 'auto';
+    const isRtl = document.documentElement.dir !== 'ltr';
 
-    // Update ARIA
+    if (smooth) {
+      afterLayer.style.transition = 'width 0.3s cubic-bezier(0.16, 1, 0.3, 1)';
+      handle.style.transition = 'left 0.3s, right 0.3s';
+    } else {
+      afterLayer.style.transition = 'none';
+      handle.style.transition = 'none';
+    }
+
+    if (isRtl) {
+      afterLayer.style.width = `${percentage}%`;
+      afterLayer.style.right = '0';
+      afterLayer.style.left = 'auto';
+      afterLayer.style.borderLeft = '2px solid var(--color-brand-blue)';
+      afterLayer.style.borderRight = 'none';
+      handle.style.right = `${percentage}%`;
+      handle.style.left = 'auto';
+    } else {
+      afterLayer.style.width = `${percentage}%`;
+      afterLayer.style.left = '0';
+      afterLayer.style.right = 'auto';
+      afterLayer.style.borderRight = '2px solid var(--color-brand-blue)';
+      afterLayer.style.borderLeft = 'none';
+      handle.style.left = `${percentage}%`;
+      handle.style.right = 'auto';
+    }
+
     handle.setAttribute('aria-valuenow', Math.round(percentage));
   }
 
   function handleMove(clientX) {
     const rect = container.getBoundingClientRect();
-    // In RTL, 0% is right edge, 100% is left edge
-    const offsetX = rect.right - clientX;
-    const percentage = (offsetX / rect.width) * 100;
-    setSliderPosition(percentage);
+    const isRtl = document.documentElement.dir !== 'ltr';
+    let percentage;
+
+    if (isRtl) {
+      const offsetX = rect.right - clientX;
+      percentage = (offsetX / rect.width) * 100;
+    } else {
+      const offsetX = clientX - rect.left;
+      percentage = (offsetX / rect.width) * 100;
+    }
+    setSliderPosition(percentage, false);
   }
 
-  // Mouse Events
+  // Pointer / Mouse Events
   handle.addEventListener('mousedown', (e) => {
     isDragging = true;
     e.preventDefault();
@@ -50,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Touch Events
-  handle.addEventListener('touchstart', (e) => {
+  handle.addEventListener('touchstart', () => {
     isDragging = true;
   }, { passive: true });
 
@@ -63,36 +92,32 @@ document.addEventListener('DOMContentLoaded', () => {
     handleMove(e.touches[0].clientX);
   }, { passive: true });
 
-  // Click on container to jump
+  // Direct Click on container
   container.addEventListener('click', (e) => {
-    // ignore if clicked on handle itself
     if (e.target === handle || handle.contains(e.target)) return;
     handleMove(e.clientX);
   });
 
-  // Keyboard Navigation (WCAG 2.2 Accessible Slider)
+  // Keyboard navigation
   handle.addEventListener('keydown', (e) => {
     let handled = true;
+    const isRtl = document.documentElement.dir !== 'ltr';
+    const delta = isRtl ? -5 : 5;
+
     switch (e.key) {
       case 'ArrowRight':
       case 'ArrowDown':
-        setSliderPosition(currentPercentage - 5);
+        setSliderPosition(currentPercentage + delta, true);
         break;
       case 'ArrowLeft':
       case 'ArrowUp':
-        setSliderPosition(currentPercentage + 5);
-        break;
-      case 'PageDown':
-        setSliderPosition(currentPercentage - 15);
-        break;
-      case 'PageUp':
-        setSliderPosition(currentPercentage + 15);
+        setSliderPosition(currentPercentage - delta, true);
         break;
       case 'Home':
-        setSliderPosition(5);
+        setSliderPosition(5, true);
         break;
       case 'End':
-        setSliderPosition(95);
+        setSliderPosition(95, true);
         break;
       default:
         handled = false;
@@ -103,6 +128,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Initialize
+  // Presets
+  const btnBefore = document.getElementById('compPresetBefore');
+  const btnHalf = document.getElementById('compPresetHalf');
+  const btnAfter = document.getElementById('compPresetAfter');
+
+  if (btnBefore) {
+    btnBefore.addEventListener('click', () => setSliderPosition(10, true));
+  }
+  if (btnHalf) {
+    btnHalf.addEventListener('click', () => setSliderPosition(50, true));
+  }
+  if (btnAfter) {
+    btnAfter.addEventListener('click', () => setSliderPosition(90, true));
+  }
+
+  // Initial position
   setSliderPosition(50);
 });

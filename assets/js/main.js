@@ -1,5 +1,5 @@
 /**
- * TypesetOK (TOK) — Main Website Script
+ * TypesetOK (TOK) — Main Website Engine
  * High performance, zero bloat, WCAG 2.2 AA compliant.
  */
 
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileToggle.addEventListener('click', () => {
       const isOpen = mobileDrawer.classList.toggle('open');
       mobileToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      mobileToggle.setAttribute('aria-label', isOpen ? 'סגור תפריט ניווט' : 'פתח תפריט ניווט');
+      mobileToggle.setAttribute('aria-label', isOpen ? 'Close Menu' : 'Open Menu');
     });
 
     mobileLinks.forEach(link => {
@@ -69,75 +69,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 4. Reduced Motion Toggle
-  const reduceMotionBtn = document.getElementById('toggleReducedMotionBtn');
-  const rootHtml = document.documentElement;
-
-  // Check saved preference or system preference
-  const savedMotion = localStorage.getItem('tok_reduced_motion');
-  const systemPrefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  if (savedMotion === 'true' || (savedMotion === null && systemPrefersReduced)) {
-    rootHtml.setAttribute('data-reduced-motion', 'true');
-    if (reduceMotionBtn) reduceMotionBtn.classList.add('active');
-  }
-
-  if (reduceMotionBtn) {
-    reduceMotionBtn.addEventListener('click', () => {
-      const isCurrentlyReduced = rootHtml.getAttribute('data-reduced-motion') === 'true';
-      if (isCurrentlyReduced) {
-        rootHtml.removeAttribute('data-reduced-motion');
-        localStorage.setItem('tok_reduced_motion', 'false');
-        reduceMotionBtn.classList.remove('active');
-        reduceMotionBtn.setAttribute('aria-pressed', 'false');
-      } else {
-        rootHtml.setAttribute('data-reduced-motion', 'true');
-        localStorage.setItem('tok_reduced_motion', 'true');
-        reduceMotionBtn.classList.add('active');
-        reduceMotionBtn.setAttribute('aria-pressed', 'true');
-      }
+  // 4. Hero Monograph Plate Local Grid Toggle (Non-intrusive)
+  const monographGridBtn = document.getElementById('monographGridBtn');
+  const monographSheet = document.getElementById('monographSheet');
+  if (monographGridBtn && monographSheet) {
+    monographGridBtn.addEventListener('click', () => {
+      const active = monographSheet.classList.toggle('show-grid');
+      monographGridBtn.classList.toggle('active', active);
+      monographGridBtn.setAttribute('aria-pressed', active ? 'true' : 'false');
     });
   }
 
-  // 5. Guideline Grid Overlay Toggle
-  const guideToggleBtn = document.getElementById('toggleGuidesBtn');
-  const savedGuides = localStorage.getItem('tok_show_guides');
-
-  if (savedGuides === 'true') {
-    document.body.classList.add('show-guides');
-    if (guideToggleBtn) guideToggleBtn.classList.add('active');
-  }
-
-  if (guideToggleBtn) {
-    guideToggleBtn.addEventListener('click', () => {
-      const isActive = document.body.classList.toggle('show-guides');
-      localStorage.setItem('tok_show_guides', isActive ? 'true' : 'false');
-      guideToggleBtn.classList.toggle('active', isActive);
-      guideToggleBtn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
-    });
-  }
-
-  // 6. Theme Toggle (Dark / Light)
-  const themeToggleBtn = document.getElementById('toggleThemeBtn');
-  const savedTheme = localStorage.getItem('tok_theme');
-
-  if (savedTheme) {
-    rootHtml.setAttribute('data-theme', savedTheme);
-    if (themeToggleBtn && savedTheme === 'dark') themeToggleBtn.classList.add('active');
-  }
-
-  if (themeToggleBtn) {
-    themeToggleBtn.addEventListener('click', () => {
-      const currentTheme = rootHtml.getAttribute('data-theme') || 'light';
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      rootHtml.setAttribute('data-theme', newTheme);
-      localStorage.setItem('tok_theme', newTheme);
-      themeToggleBtn.classList.toggle('active', newTheme === 'dark');
-      themeToggleBtn.setAttribute('aria-label', newTheme === 'dark' ? 'מעבר למצב בהיר' : 'מעבר למצב כהה');
-    });
-  }
-
-  // 7. Scroll Reveal Observer (Lazy animation on scroll)
+  // 5. Scroll Reveal Observer
   const reveals = document.querySelectorAll('.reveal-on-scroll');
   if (reveals.length && 'IntersectionObserver' in window) {
     const revealObserver = new IntersectionObserver((entries) => {
@@ -147,14 +90,14 @@ document.addEventListener('DOMContentLoaded', () => {
           revealObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.08 });
 
     reveals.forEach(el => revealObserver.observe(el));
   } else {
     reveals.forEach(el => el.classList.add('revealed'));
   }
 
-  // 8. Pipeline Progressive Disclosure Steps
+  // 6. Pipeline Progressive Disclosure Steps
   const pipelineCards = document.querySelectorAll('.pipeline-step-card');
   const pipeTitle = document.getElementById('pipeDetailTitle');
   const pipeDesc = document.getElementById('pipeDetailDesc');
@@ -205,9 +148,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 9. Modals Management (Download & Architecture)
+  // 7. Modals Management (Architecture & Source Guide)
   const modalBackdrop = document.getElementById('modalBackdrop');
-  const downloadModal = document.getElementById('downloadModal');
+  const sourceModal = document.getElementById('sourceModal');
   const archModal = document.getElementById('archModal');
 
   function openModal(modal) {
@@ -217,7 +160,6 @@ document.addEventListener('DOMContentLoaded', () => {
     modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
 
-    // Focus first focusable
     const closeBtn = modal.querySelector('.modal-close-btn');
     if (closeBtn) closeBtn.focus();
   }
@@ -225,9 +167,9 @@ document.addEventListener('DOMContentLoaded', () => {
   function closeModal() {
     if (!modalBackdrop) return;
     modalBackdrop.classList.remove('open');
-    if (downloadModal) {
-      downloadModal.classList.remove('open');
-      downloadModal.setAttribute('aria-hidden', 'true');
+    if (sourceModal) {
+      sourceModal.classList.remove('open');
+      sourceModal.setAttribute('aria-hidden', 'true');
     }
     if (archModal) {
       archModal.classList.remove('open');
@@ -236,11 +178,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = '';
   }
 
-  // Trigger buttons
-  document.querySelectorAll('[data-open-modal="download"]').forEach(btn => {
+  document.querySelectorAll('[data-open-modal="source"]').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      openModal(downloadModal);
+      openModal(sourceModal);
     });
   });
 
@@ -265,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 10. Newsletter Form
+  // 8. Newsletter Form
   const newsletterForm = document.getElementById('newsletterForm');
   const newsletterMsg = document.getElementById('newsletterMsg');
   if (newsletterForm && newsletterMsg) {
@@ -274,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const emailInput = document.getElementById('newsletterEmail');
       if (emailInput && emailInput.value) {
         localStorage.setItem('tok_newsletter_subscribed', emailInput.value);
-        newsletterMsg.textContent = 'תודה רבה! נרשמת בהצלחה לעדכוני גרסאות וקוד של TypesetOK.';
+        newsletterMsg.textContent = 'תודה רבה! נרשמת בהצלחה לעדכוני המחקר והקוד של TypesetOK.';
         newsletterMsg.style.display = 'block';
         emailInput.value = '';
       }

@@ -1,63 +1,64 @@
 /* ==========================================================================
    TypesetOK (TOK) — Design Tokens (Editorial Technology)
+   Default: Dark Mode (מצב לילה כברירת מחדל)
    ========================================================================== */
 
 :root {
-  /* Color Palette — Light Editorial Paper Mode (Default) */
-  --color-bg-base: #F8F6F0;
-  --color-bg-paper: #FCFBF9;
-  --color-bg-surface: #FFFFFF;
-  --color-bg-subtle: #F1EEE6;
-  --color-bg-elevated: #FFFFFF;
+  /* Color Palette — Premium Dark Editorial Mode (DEFAULT) */
+  --color-bg-base: #0B0E14;
+  --color-bg-paper: #111622;
+  --color-bg-surface: #171E2E;
+  --color-bg-subtle: #1D263A;
+  --color-bg-elevated: #242F46;
   
-  --color-ink-primary: #12161F;
-  --color-ink-secondary: #3D4554;
-  --color-ink-muted: #647087;
-  --color-ink-faint: #9AA4B5;
+  --color-ink-primary: #F0F4FA;
+  --color-ink-secondary: #CBD5E1;
+  --color-ink-muted: #8E9BB0;
+  --color-ink-faint: #5B6880;
 
   /* Brand Palette from TypesetOK Identity */
-  --color-brand-blue: #1D63ED;
-  --color-brand-blue-hover: #1551CA;
-  --color-brand-blue-light: #EFF5FF;
-  --color-brand-blue-glow: rgba(29, 99, 237, 0.15);
+  --color-brand-blue: #2563EB;
+  --color-brand-blue-hover: #3B82F6;
+  --color-brand-blue-light: rgba(37, 99, 235, 0.16);
+  --color-brand-blue-glow: rgba(37, 99, 235, 0.25);
   
-  --color-brand-navy: #16234B;
-  --color-brand-navy-dark: #0D1527;
-  --color-brand-navy-light: #233468;
+  --color-brand-navy: #E2E8F0;
+  --color-brand-navy-dark: #07090D;
+  --color-brand-navy-light: #60A5FA;
   
-  --color-accent-gold: #B4833E;
-  --color-accent-gold-light: #FBF6EB;
-  --color-accent-gold-hover: #966C30;
+  --color-accent-gold: #D9A04B;
+  --color-accent-gold-light: rgba(217, 160, 75, 0.15);
+  --color-accent-gold-hover: #F59E0B;
 
   /* Prepress Ink Separations (Fogra 39 / ISO 15930) */
-  --color-cmyk-cyan: #00A3E0;
-  --color-cmyk-magenta: #E6007E;
-  --color-cmyk-yellow: #E5BE01;
-  --color-cmyk-black: #111111;
+  --color-cmyk-cyan: #00B4D8;
+  --color-cmyk-magenta: #F72585;
+  --color-cmyk-yellow: #FFD166;
+  --color-cmyk-black: #06080C;
 
   /* Borders & Editorial Rule Lines */
-  --color-border-subtle: #E5E1D6;
-  --color-border-medium: #D1CCBF;
-  --color-border-strong: #16234B;
-  --color-guide-line: rgba(22, 35, 75, 0.12);
-  --color-guide-active: #1D63ED;
-  --color-grid-overlay: rgba(29, 99, 237, 0.05);
+  --color-border-subtle: #1F283C;
+  --color-border-medium: #2C3852;
+  --color-border-strong: #4B5E82;
+  --color-guide-line: rgba(255, 255, 255, 0.08);
+  --color-guide-active: #3B82F6;
+  --color-grid-overlay: rgba(59, 130, 246, 0.05);
 
   /* Typography Families */
   --font-serif: 'Frank Ruhl Libre', 'David Libre', 'David', 'Times New Roman', serif;
   --font-sans: 'Heebo', 'Assistant', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
 
-  /* Fluid Typographic Scale */
-  --font-size-2xs: clamp(0.7rem, 0.65rem + 0.25vw, 0.75rem);   /* 11-12px */
-  --font-size-xs:  clamp(0.78rem, 0.74rem + 0.25vw, 0.84rem);  /* 12-13.5px */
-  --font-size-sm:  clamp(0.88rem, 0.84rem + 0.25vw, 0.94rem);  /* 14-15px */
-  --font-size-base: clamp(1rem, 0.95rem + 0.3vw, 1.08rem);     /* 16-17.5px */
-  --font-size-lg:  clamp(1.15rem, 1.08rem + 0.4vw, 1.25rem);   /* 18-20px */
-  --font-size-xl:  clamp(1.35rem, 1.22rem + 0.7vw, 1.55rem);   /* 21.5-25px */
-  --font-size-2xl: clamp(1.65rem, 1.45rem + 1.1vw, 2rem);      /* 26-32px */
-  --font-size-3xl: clamp(2.1rem, 1.75rem + 1.8vw, 2.75rem);    /* 33-44px */
-  --font-size-4xl: clamp(2.7rem, 2.1rem + 2.8vw, 3.8rem);      /* 43-60px */
+  /* Fluid Typographic Scale — Responsive clamp */
+  --font-size-2xs: clamp(0.7rem, 0.65rem + 0.25vw, 0.75rem);
+  --font-size-xs:  clamp(0.78rem, 0.74rem + 0.25vw, 0.84rem);
+  --font-size-sm:  clamp(0.88rem, 0.84rem + 0.25vw, 0.94rem);
+  --font-size-base: clamp(0.96rem, 0.92rem + 0.3vw, 1.06rem);
+  --font-size-lg:  clamp(1.12rem, 1.05rem + 0.4vw, 1.22rem);
+  --font-size-xl:  clamp(1.3rem, 1.18rem + 0.7vw, 1.5rem);
+  --font-size-2xl: clamp(1.55rem, 1.35rem + 1vw, 1.95rem);
+  --font-size-3xl: clamp(1.9rem, 1.6rem + 1.6vw, 2.5rem);
+  --font-size-4xl: clamp(2.3rem, 1.85rem + 2.4vw, 3.4rem);
 
   /* Line Heights */
   --line-height-tight: 1.15;
@@ -79,9 +80,8 @@
   --space-16: 64px;
   --space-20: 80px;
   --space-24: 96px;
-  --space-32: 128px;
 
-  /* Architectural Radii (Editorial & crisp) */
+  /* Architectural Radii */
   --radius-xs: 3px;
   --radius-sm: 6px;
   --radius-md: 10px;
@@ -90,52 +90,64 @@
   --radius-pill: 9999px;
 
   /* Paper Shadows */
-  --shadow-subtle: 0 1px 2px rgba(22, 35, 75, 0.05);
-  --shadow-paper: 0 2px 8px -2px rgba(22, 35, 75, 0.06), 0 10px 24px -4px rgba(22, 35, 75, 0.07);
-  --shadow-floating: 0 4px 12px rgba(22, 35, 75, 0.06), 0 20px 48px -10px rgba(22, 35, 75, 0.14);
-  --shadow-glow: 0 0 24px rgba(29, 99, 237, 0.2);
+  --shadow-subtle: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-paper: 0 4px 16px rgba(0, 0, 0, 0.45);
+  --shadow-floating: 0 16px 48px rgba(0, 0, 0, 0.65);
+  --shadow-glow: 0 0 24px rgba(37, 99, 235, 0.35);
 
   /* Motion Timing & Easing */
   --motion-fast: 160ms cubic-bezier(0.16, 1, 0.3, 1);
   --motion-normal: 260ms cubic-bezier(0.16, 1, 0.3, 1);
   --motion-slow: 420ms cubic-bezier(0.16, 1, 0.3, 1);
-  --motion-stagger: 60ms;
 
   /* Layout Widths */
-  --container-max: 1280px;
-  --container-editorial: 980px;
-  --container-narrow: 760px;
-  --header-height: 70px;
+  --container-max: 1240px;
+  --container-editorial: 960px;
+  --container-narrow: 740px;
+  --header-height: 68px;
 
   /* Z-Index Layers */
   --z-base: 1;
   --z-guidelines: 5;
   --z-content: 10;
   --z-sticky: 100;
-  --z-dropdown: 200;
+  --z-drawer: 200;
+  --z-a11y-widget: 400;
   --z-modal-backdrop: 500;
   --z-modal: 600;
   --z-toast: 1000;
 }
 
-/* Dark Editorial Variant (for code/inspection panels and dark mode preference) */
-[data-theme="dark"] {
-  --color-bg-base: #0B0E14;
-  --color-bg-paper: #11151F;
-  --color-bg-surface: #171C28;
-  --color-bg-subtle: #1C2333;
-  --color-bg-elevated: #232C40;
+/* Light Mode Variant (Active when user clicks Day/Night toggle) */
+[data-theme="light"] {
+  --color-bg-base: #F8F6F0;
+  --color-bg-paper: #FCFBF9;
+  --color-bg-surface: #FFFFFF;
+  --color-bg-subtle: #F1EEE6;
+  --color-bg-elevated: #FFFFFF;
 
-  --color-ink-primary: #F1F4FA;
-  --color-ink-secondary: #C4CBD8;
-  --color-ink-muted: #8B96AA;
-  --color-ink-faint: #59657A;
+  --color-ink-primary: #12161F;
+  --color-ink-secondary: #3D4554;
+  --color-ink-muted: #647087;
+  --color-ink-faint: #9AA4B5;
 
-  --color-border-subtle: #252D3F;
-  --color-border-medium: #37425B;
-  --color-border-strong: #4F5F82;
-  --color-guide-line: rgba(255, 255, 255, 0.08);
+  --color-brand-blue: #1D63ED;
+  --color-brand-blue-hover: #1551CA;
+  --color-brand-blue-light: #EFF5FF;
+  --color-brand-blue-glow: rgba(29, 99, 237, 0.15);
 
-  --shadow-paper: 0 4px 16px rgba(0, 0, 0, 0.4);
-  --shadow-floating: 0 16px 48px rgba(0, 0, 0, 0.6);
+  --color-brand-navy: #16234B;
+  --color-brand-navy-dark: #0D1527;
+  --color-brand-navy-light: #233468;
+
+  --color-accent-gold: #B4833E;
+  --color-accent-gold-light: #FBF6EB;
+
+  --color-border-subtle: #E5E1D6;
+  --color-border-medium: #D1CCBF;
+  --color-border-strong: #16234B;
+  --color-guide-line: rgba(22, 35, 75, 0.12);
+
+  --shadow-paper: 0 2px 8px -2px rgba(22, 35, 75, 0.06), 0 10px 24px -4px rgba(22, 35, 75, 0.07);
+  --shadow-floating: 0 4px 12px rgba(22, 35, 75, 0.06), 0 20px 48px -10px rgba(22, 35, 75, 0.14);
 }

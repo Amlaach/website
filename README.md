@@ -24,17 +24,18 @@
 ## 🇮🇱 עברית
 
 ### 📖 אודות האתר והקונספט
-ריפו זה מכיל את קוד המקור של אתר התדמית וההדגמה הרשמי של **TypesetOK (TOK)** — תוכנת עימוד ופרסום שולחני (DTP) מודרנית בקוד פתוח לטיפוגרפיה עברית מתקדמת, ספרי קודש (ש"ס, מקראות גדולות ושו"ת) ומסמכי ענק.
+ריפו זה מכיל את קוד המקור של אתר התדמית וההדגמה הרשמי של **TypesetOK (TOK)** — מפרט ארכיטקטוני ותשתית מחקר בקוד פתוח לעימוד ופרסום שולחני (DTP) לטיפוגרפיה עברית מתקדמת, ספרי קודש (ש"ס, מקראות גדולות ושו"ת) ומסמכי ענק.
+פותח ומוביל: **[Amlaach](https://amlaach.github.io/personal-site/)**.
 
-האתר עוצב ותוכנת לפי קונספט **Editorial Technology** — ממשק אינטראקטיבי המעביר את תחושת הטיפוגרפיה והעימוד החי דרך החוויה עצמה, ללא הסתמכות על דפי נחיתה שיווקיים גנריים. האתר מותאם להרצה מלאה כאתר סטטי ב-**GitHub Pages**.
+האתר עוצב ותוכנת לפי קונספט **Editorial Technology** — ממשק אינטראקטיבי המעביר את תחושת הטיפוגרפיה והעימוד החי דרך החוויה עצמה, ללא הסתמכות על דפי נחיתה שיווקיים גנריים. האתר מותאם להרצה מלאה כאתר סטטי ב-**GitHub Pages**, כולל תמיכה ב-4 שפות (עברית, אנגלית, ספרדית, צרפתית), מצב כהה כברירת מחדל, וסרגל נגישות מקיף (WCAG 2.2 AA).
 
 ---
 
 ### 🌟 רכיבים אינטראקטיביים מרכזיים
 
-1. **מנוע עימוד חי ב-Hero (The Living Typesetting Machine):**
-   * מעבר תלת-שלבי בזמן אמת: טקסט גולמי $\rightarrow$ עץ סמנטי TDM AST מבוסס ULID ונרמול ת"י 6100 $\rightarrow$ עימוד Master מושלם עם אותיות התפשטות (אהלתר"ם) ואיזון שורות.
-   * הדמיית אופטימיזציית Knuth-Plass בזמן אמת.
+1. **לוח הגהה מונוגרפי ב-Hero (Editorial Monograph Specimen):**
+   * תצוגת מופת דפוס חיה של פרק א' במשנה (ברכות), משולבת קווי ייחוס טיפוגרפיים, נרמול ת"י 6100 ואיזון שורות.
+   * מתג גריד ייעודי לבחינת קווי היסוד הדפוסאיים.
 
 2. **גלילת סיפור טיפוגרפי (Scroll Storytelling):**
    * **סצנה 1:** נרמול קפדני לפי תקן ישראלי ת"י 6100 וגימטריה דטרמיניסטית (15 $\rightarrow$ ט״ו, 16 $\rightarrow$ ט״ז).
@@ -47,7 +48,7 @@
 
 4. **סליידר השוואה לפני/אחרי (Before / After Comparison):**
    * השוואה ויזואלית בין מעבד תמלילים רגיל (וורד) לבין בלוק העימוד המהודק של TypesetOK.
-   * נגיש לחלוטין במגע, עכבר ומקלדת (מקשי חצים, Home/End).
+   * כפתורי Presets מהירים (Word / 50% / TypesetOK), תמיכה במגע, עכבר ומקלדת (מקשי חצים, Home/End) בשפות RTL ו-LTR.
 
 5. **הדמיית סביבת עבודה שולחנית (Product Workbench Preview):**
    * עץ צמתים סמנטי (TDM Node Tree) המעדכן מאפייני אלמנטים בזמן אמת.
@@ -88,11 +89,12 @@ python -m http.server 8000
 ---
 
 ## 🇺🇸 English
-
+ 
 ### 📖 About
-This repository contains the source code for the official website and interactive showcase of **TypesetOK (TOK)** — a modern, open-source Desktop Publishing (DTP) system written from the ground up in Rust for advanced Hebrew typography, sacred texts (Talmud, Mikraot Gedolot, Responsa), and massive 1,000+ page manuscripts.
+This repository contains the source code for the official website and interactive showcase of **TypesetOK (TOK)** — an open-source architectural specification and research foundation for desktop publishing (DTP) dedicated to advanced Hebrew typography, sacred texts (Talmud, Mikraot Gedolot, Responsa), and large-scale manuscripts.
+Lead Developer: **[Amlaach](https://amlaach.github.io/personal-site/)**.
 
-The site is designed under the **Editorial Technology** concept, turning the physical world of typography, baseline grids, and pre-press standards into an interactive, accessible digital surface.
+The site is designed under the **Editorial Technology** concept, turning the physical world of typography, baseline grids, and pre-press standards into an interactive, accessible digital surface. It is fully static, deployed directly to **GitHub Pages**, with dark mode as default, 4 languages (Hebrew, US English, Spanish, French), and an accessible toolbar (WCAG 2.2 AA).
 
 ---
 
@@ -103,7 +105,7 @@ The site is designed under the **Editorial Technology** concept, turning the phy
   * Broken asset & link verification.
   * CSS & JS syntax tree checks.
 * **Automated GitHub Pages Deployment (`.github/workflows/deploy-pages.yml`):**
-  * Automatically deploys on every push to `main`/`master`.
+  * Automatically deploys on every push to `main`.
   * Pre-configured with `.nojekyll` and custom `404.html`.
 
 ---
@@ -112,8 +114,8 @@ The site is designed under the **Editorial Technology** concept, turning the phy
 
 ```
 website/
-├── index.html                   # Semantic HTML5 Master Document
-├── 404.html                     # Custom Accessible 404 Page
+├── index.html                   # Semantic HTML5 Master Document (i18n & Schema.org)
+├── 404.html                     # Custom Accessible 404 Page (Dark mode default)
 ├── .nojekyll                    # Disables Jekyll processing on GitHub Pages
 ├── site.webmanifest             # Web App Manifest
 ├── robots.txt                   # Search Engine Crawler Directives
@@ -133,16 +135,17 @@ website/
     │   ├── logo.jpg             # TypesetOK Brand Logo (Open Book + OK)
     │   └── favicon.svg          # Crisp Vector Favicon
     ├── css/
-    │   ├── tokens.css           # Design Tokens (Colors, Typography, Spacing)
+    │   ├── tokens.css           # Design Tokens (Colors, Typography, Dark Default)
     │   ├── reset.css            # Accessible RTL Reset
     │   ├── main.css             # Editorial Grid & Layout Primitives
-    │   ├── components.css       # Interactive Modules & Demos
-    │   └── a11y-motion.css      # WCAG 2.2 AA & Reduced Motion Overrides
+    │   ├── components.css       # Interactive Modules & Demos (Fluid mobile-safe)
+    │   └── a11y-motion.css      # WCAG 2.2 AA Toolbar & Reduced Motion Overrides
     └── js/
         ├── main.js              # Navigation, Observers & Modals
-        ├── hero-animation.js    # Living Specimen Pipeline Animation
+        ├── i18n.js              # Multi-lingual Engine (HE, EN, ES, FR)
+        ├── a11y.js              # Universal Accessibility Controller (12 features)
         ├── playground.js        # Interactive Typography Playground
-        ├── before-after.js      # Accessible Comparison Slider
+        ├── before-after.js      # Accessible Fluid Comparison Slider & Presets
         └── workbench.js         # Desktop Workbench & TDM Inspector
 ```
 
@@ -152,3 +155,4 @@ website/
 
 This repository and the TypesetOK project are licensed under the:
 **[TypesetOK Source-Available Non-Commercial Copyleft License (TOK-NCCL v1.0)](https://github.com/TypesetOK/typesetok/blob/main/LICENSE.md)**
+

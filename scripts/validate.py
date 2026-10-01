@@ -41,7 +41,8 @@ def main():
         "assets/css/components.css",
         "assets/css/a11y-motion.css",
         "assets/js/main.js",
-        "assets/js/hero-animation.js",
+        "assets/js/i18n.js",
+        "assets/js/a11y.js",
         "assets/js/playground.js",
         "assets/js/before-after.js",
         "assets/js/workbench.js"
