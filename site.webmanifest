@@ -1,0 +1,21 @@
+{
+  "name": "TypesetOK — תוכנת עימוד שולחנית מקצועית",
+  "short_name": "TypesetOK",
+  "description": "מערכת עימוד ופרסום שולחני (DTP) מודרנית בקוד פתוח לטיפוגרפיה עברית, ספרי קודש ומסמכי ענק ב-Rust.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FCFBF9",
+  "theme_color": "#1D63ED",
+  "icons": [
+    {
+      "src": "assets/images/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "assets/images/logo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}

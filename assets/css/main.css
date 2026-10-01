@@ -1,0 +1,478 @@
+/* ==========================================================================
+   TypesetOK — Main Layout, Editorial Grid & Components
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Container & Layout Structure
+   -------------------------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-6);
+  padding-right: var(--space-6);
+}
+
+.container-editorial {
+  width: 100%;
+  max-width: var(--container-editorial);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-6);
+  padding-right: var(--space-6);
+}
+
+.container-narrow {
+  width: 100%;
+  max-width: var(--container-narrow);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-6);
+  padding-right: var(--space-6);
+}
+
+/* --------------------------------------------------------------------------
+   Editorial Background & Optional Measurement Grid Overlay
+   -------------------------------------------------------------------------- */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(29, 99, 237, 0.02) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(180, 131, 62, 0.025) 0%, transparent 50%);
+  z-index: -1;
+}
+
+/* Editorial Guideline Grid Overlay (Toggled via button) */
+body.show-guides::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: 
+    linear-gradient(to bottom, var(--color-grid-overlay) 1px, transparent 1px),
+    linear-gradient(to right, var(--color-grid-overlay) 1px, transparent 1px);
+  background-size: 24px 24px;
+  z-index: var(--z-guidelines);
+}
+
+/* --------------------------------------------------------------------------
+   Sticky Top Navigation Bar
+   -------------------------------------------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: var(--header-height);
+  background-color: rgba(252, 251, 249, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border-subtle);
+  z-index: var(--z-sticky);
+  transition: background-color var(--motion-normal), border-color var(--motion-normal);
+}
+
+[data-theme="dark"] .site-header {
+  background-color: rgba(17, 21, 31, 0.92);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  gap: var(--space-4);
+}
+
+.brand-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  text-decoration: none;
+  color: var(--color-ink-primary);
+}
+
+.brand-logo-img {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 2px 6px rgba(22, 35, 75, 0.12);
+  border: 1px solid rgba(22, 35, 75, 0.08);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-name {
+  font-family: var(--font-serif);
+  font-size: var(--font-size-lg);
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--color-brand-navy);
+  letter-spacing: -0.02em;
+}
+
+[data-theme="dark"] .brand-name {
+  color: #FFFFFF;
+}
+
+.brand-tagline {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-2xs);
+  color: var(--color-ink-muted);
+  letter-spacing: 0.02em;
+}
+
+/* Nav Menu */
+.primary-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.nav-link {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-ink-secondary);
+  position: relative;
+  padding: var(--space-2) 0;
+  transition: color var(--motion-fast);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--color-brand-blue);
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-brand-blue);
+  transition: width var(--motion-fast);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Header Controls & Actions */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-subtle);
+  background-color: var(--color-bg-paper);
+  color: var(--color-ink-secondary);
+  transition: all var(--motion-fast);
+}
+
+.icon-btn:hover {
+  background-color: var(--color-bg-subtle);
+  color: var(--color-brand-blue);
+  border-color: var(--color-brand-blue);
+}
+
+.icon-btn.active {
+  background-color: var(--color-brand-blue-light);
+  color: var(--color-brand-blue);
+  border-color: var(--color-brand-blue);
+}
+
+/* Scroll Progress Bar at Top */
+.scroll-progress-bar {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--color-brand-blue), var(--color-accent-gold));
+  z-index: 10;
+  transition: width 0.05s linear;
+}
+
+/* Mobile Hamburger Toggle */
+.mobile-nav-toggle {
+  display: none;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-subtle);
+  color: var(--color-ink-primary);
+  align-items: center;
+  justify-content: center;
+}
+
+/* Mobile Navigation Drawer */
+.mobile-nav-drawer {
+  display: none;
+  position: fixed;
+  inset: var(--header-height) 0 0 0;
+  background-color: var(--color-bg-paper);
+  padding: var(--space-6);
+  flex-direction: column;
+  gap: var(--space-4);
+  border-top: 1px solid var(--color-border-subtle);
+  z-index: var(--z-drawer);
+  box-shadow: var(--shadow-floating);
+  overflow-y: auto;
+}
+
+.mobile-nav-drawer.open {
+  display: flex;
+}
+
+.mobile-nav-link {
+  font-family: var(--font-serif);
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-ink-primary);
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+/* --------------------------------------------------------------------------
+   Editorial Badges & Metadata Chips
+   -------------------------------------------------------------------------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-2xs);
+  font-weight: 600;
+  background-color: var(--color-bg-subtle);
+  color: var(--color-brand-navy);
+  border: 1px solid var(--color-border-subtle);
+  letter-spacing: 0.02em;
+}
+
+.badge-brand {
+  background-color: var(--color-brand-blue-light);
+  color: var(--color-brand-blue);
+  border-color: rgba(29, 99, 237, 0.2);
+}
+
+.badge-accent {
+  background-color: var(--color-accent-gold-light);
+  color: var(--color-accent-gold);
+  border-color: rgba(180, 131, 62, 0.25);
+}
+
+.badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: currentColor;
+}
+
+/* --------------------------------------------------------------------------
+   Editorial Buttons
+   -------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  transition: all var(--motion-fast);
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background-color: var(--color-brand-blue);
+  color: #FFFFFF;
+  border: 1px solid var(--color-brand-blue);
+  box-shadow: 0 2px 4px rgba(29, 99, 237, 0.2);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-brand-blue-hover);
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(29, 99, 237, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background-color: var(--color-bg-paper);
+  color: var(--color-brand-navy);
+  border: 1px solid var(--color-border-medium);
+  box-shadow: var(--shadow-subtle);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-bg-subtle);
+  border-color: var(--color-brand-navy);
+  color: var(--color-brand-navy);
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-brand-blue);
+  border: 1px solid var(--color-brand-blue);
+}
+
+.btn-outline:hover {
+  background: var(--color-brand-blue-light);
+  color: var(--color-brand-blue-hover);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-ink-secondary);
+}
+
+.btn-ghost:hover {
+  background: var(--color-bg-subtle);
+  color: var(--color-ink-primary);
+}
+
+.btn-lg {
+  padding: var(--space-4) var(--space-8);
+  font-size: var(--font-size-base);
+  border-radius: var(--radius-md);
+}
+
+.btn-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+/* --------------------------------------------------------------------------
+   Editorial Section Layout & Headers
+   -------------------------------------------------------------------------- */
+.editorial-section {
+  padding-top: var(--space-24);
+  padding-bottom: var(--space-24);
+  position: relative;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.section-lead-header {
+  margin-bottom: var(--space-12);
+  text-align: center;
+}
+
+.section-pretitle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  color: var(--color-accent-gold);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-3);
+}
+
+.section-title {
+  font-size: var(--font-size-3xl);
+  font-weight: 800;
+  color: var(--color-brand-navy);
+  margin-bottom: var(--space-4);
+  letter-spacing: -0.01em;
+}
+
+[data-theme="dark"] .section-title {
+  color: #FFFFFF;
+}
+
+.section-subtitle {
+  font-size: var(--font-size-lg);
+  color: var(--color-ink-secondary);
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: var(--line-height-snug);
+}
+
+/* --------------------------------------------------------------------------
+   Paper Sheet Container (Editorial Document Aesthetic)
+   -------------------------------------------------------------------------- */
+.paper-sheet {
+  background-color: var(--color-bg-paper);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-paper);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Corner Crop Marks for Typeset Sheet Look */
+.paper-sheet-crops::before,
+.paper-sheet-crops::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.paper-sheet-crops::before {
+  top: 8px;
+  right: 8px;
+  border-top: 1.5px solid var(--color-ink-muted);
+  border-right: 1.5px solid var(--color-ink-muted);
+}
+
+.paper-sheet-crops::after {
+  bottom: 8px;
+  left: 8px;
+  border-bottom: 1.5px solid var(--color-ink-muted);
+  border-left: 1.5px solid var(--color-ink-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Rules for Main
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .primary-nav {
+    display: none;
+  }
+  
+  .mobile-nav-toggle {
+    display: inline-flex;
+  }
+
+  .editorial-section {
+    padding-top: var(--space-16);
+    padding-bottom: var(--space-16);
+  }
+  
+  .section-lead-header {
+    margin-bottom: var(--space-8);
+  }
+}
