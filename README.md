@@ -1,100 +1,81 @@
-# TypesetOK (TOK) — אתר תדמית וסדנת עימוד אינטראקטיבית
-### Editorial Technology Showcase & Desktop Publishing Web Platform
+<div align="center">
 
-אתר תדמית וסדנת עימוד מקצועית בקוד פתוח עבור מערכת העימוד והפרסום השולחני **TypesetOK (TOK)**.
-האתר נבנה בקונספט **Editorial Technology** — שילוב בין עולם הדפוס והטיפוגרפיה המסורתית לבין טכנולוגיית רשת מתקדמת, אינטראקטיבית ונגישה.
+<img src="assets/images/logo.jpg" alt="TypesetOK Logo" width="160" style="border-radius: 16px; margin-bottom: 14px;" />
+
+# TypesetOK Website & Editorial Showcase
+### אתר תדמית וסדנת עימוד מקצועית בקוד פתוח | Official Website & Live Interactive Playground
+
+[![CI Validation](https://github.com/TypesetOK/website/actions/workflows/ci.yml/badge.svg)](https://github.com/TypesetOK/website/actions/workflows/ci.yml)
+[![GitHub Pages](https://github.com/TypesetOK/website/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/TypesetOK/website/actions/workflows/deploy-pages.yml)
+[![Live Site](https://img.shields.io/badge/Live%20Site-typesetok.github.io%2Fwebsite-1D63ED.svg)](https://typesetok.github.io/website/)
+[![License](https://img.shields.io/badge/License-TOK--NCCL%20v1.0-blue.svg)](https://github.com/TypesetOK/typesetok/blob/main/LICENSE.md)
+[![Standard](https://img.shields.io/badge/Standard-ת"י%206100%20(SI%206100)-blue.svg)]()
+[![Pre-Press](https://img.shields.io/badge/PDF%2FX--1a-ISO%2015930-purple.svg)]()
+[![A11y](https://img.shields.io/badge/Accessibility-WCAG%202.2%20AA-brightgreen.svg)]()
+
+<p align="center">
+  <b>[ <a href="#-עברית">עברית</a> | <a href="#-english">English</a> ]</b>
+</p>
+
+</div>
 
 ---
 
-## 🌟 מאפיינים ורכיבים אינטראקטיביים מרכזיים
+## 🇮🇱 עברית
 
-1. **מנוע עימוד חי ב-Hero (Living Typesetting Specimen):**
-   - מעבר תלת-שלבי בזמן אמת בין:
-     - קלט טקסט גולמי (Raw Text)
-     - עץ תחבירי סמנטי (TDM AST & SI 6100)
-     - עימוד מוגמר ב-Master עם אותיות התפשטות (אהלתר"ם) ואיזון שורות.
-   - כפתור טרנספורמציה אינטראקטיבי המדגים את התהליך שלב אחר שלב.
+### 📖 אודות האתר והקונספט
+ריפו זה מכיל את קוד המקור של אתר התדמית וההדגמה הרשמי של **TypesetOK (TOK)** — תוכנת עימוד ופרסום שולחני (DTP) מודרנית בקוד פתוח לטיפוגרפיה עברית מתקדמת, ספרי קודש (ש"ס, מקראות גדולות ושו"ת) ומסמכי ענק.
+
+האתר עוצב ותוכנת לפי קונספט **Editorial Technology** — ממשק אינטראקטיבי המעביר את תחושת הטיפוגרפיה והעימוד החי דרך החוויה עצמה, ללא הסתמכות על דפי נחיתה שיווקיים גנריים. האתר מותאם להרצה מלאה כאתר סטטי ב-**GitHub Pages**.
+
+---
+
+### 🌟 רכיבים אינטראקטיביים מרכזיים
+
+1. **מנוע עימוד חי ב-Hero (The Living Typesetting Machine):**
+   * מעבר תלת-שלבי בזמן אמת: טקסט גולמי $\rightarrow$ עץ סמנטי TDM AST מבוסס ULID ונרמול ת"י 6100 $\rightarrow$ עימוד Master מושלם עם אותיות התפשטות (אהלתר"ם) ואיזון שורות.
+   * הדמיית אופטימיזציית Knuth-Plass בזמן אמת.
 
 2. **גלילת סיפור טיפוגרפי (Scroll Storytelling):**
-   - **סצנה 1:** נרמול קפדני לפי תקן ישראלי ת"י 6100 וגימטריה דטרמיניסטית.
-   - **סצנה 2:** פותר אילוצים רב-תזרימי לעמודי ש"ס ומקראות גדולות (Talmud Solver).
-   - **סצנה 3:** מנוע קדם-דפוס נייטיב ISO 15930 (PDF/X-1a) עם Fogra 39 וטבלאות `/ToUnicode`.
+   * **סצנה 1:** נרמול קפדני לפי תקן ישראלי ת"י 6100 וגימטריה דטרמיניסטית (15 $\rightarrow$ ט״ו, 16 $\rightarrow$ ט״ז).
+   * **סצנה 2:** פותר אילוצים רב-תזרימי (Talmud Solver) לעמודי ש"ס ומקראות גדולות (גמרא, רש"י ותוספות).
+   * **סצנה 3:** קדם-דפוס נייטיב ISO 15930 (PDF/X-1a) עם שחור 100% K DeviceCMYK, פרופיל Fogra 39 וטבלאות `/ToUnicode`.
 
-3. **מעבדת עימוד אינטראקטיבית (Typography & Layout Playground):**
-   - שליטה רציפה בזמן אמת במאפיינים:
-     - גודל אות (Font Size)
-     - רווח שורות (Leading / Line Height)
-     - חלוקת טורים (1, 2, 3 טורים)
-     - מרווח בין טורים (Column Gap)
-     - מדרג יישור עברי (Tier 1: מילים, Tier 2: אותיות התפשטות אהלתר"ם, Tier 3: מיקרו-טרקינג)
-     - הצגת ניקוד וטעמים מלאים
-     - רשת קווי בסיס (Baseline Grid 24px)
-   - סרגלי מידה מדויקים (מילימטרים / A4) ומבנה דף אותנטי.
+3. **מעבדת עימוד אינטראקטיבית (Typography Playground):**
+   * שליטה בזמן אמת בגודל אות, רווח שורות (Leading), חלוקת טורים, רווח בין טורים, ומדרג יישור עברי (אהלתר"ם).
+   * סרגלי מידה מדויקים (מילימטרים / A4) ומתג לרשת קווי בסיס (Baseline Grid).
 
 4. **סליידר השוואה לפני/אחרי (Before / After Comparison):**
-   - השוואה ויזואלית בין תוצר מעבד תמלילים משרדי רגיל (וורד) לבין בלוק העימוד של TypesetOK.
-   - תמיכה מלאה במגע, עכבר ומקלדת (WCAG 2.2 Accessible Slider).
+   * השוואה ויזואלית בין מעבד תמלילים רגיל (וורד) לבין בלוק העימוד המהודק של TypesetOK.
+   * נגיש לחלוטין במגע, עכבר ומקלדת (מקשי חצים, Home/End).
 
 5. **הדמיית סביבת עבודה שולחנית (Product Workbench Preview):**
-   - תצוגת חלון עריכה שולחני עם תפריטים, עץ צמתים סמנטי (TDM Tree), סמן וירטואלי ב-120 FPS ופאנל Preflight עם נתוני אמת של המערכת.
+   * עץ צמתים סמנטי (TDM Node Tree) המעדכן מאפייני אלמנטים בזמן אמת.
+   * סמן וירטואלי ברינדור 120 FPS ופאנל בדיקות קדם-דפוס חי (Live Preflight).
 
 6. **Bento Grid חכם ליכולות המערכת:**
-   - 7 כרטיסיות אסימטריות המפרטות את הארכיטקטורה: Rust Core, SI 6100, 3-Tier Justification, Multi-Flow, Prepress, ACID WAL Storage, Holy Name Guardian.
+   * 7 כרטיסיות אסימטריות המפרטות את הארכיטקטורה: Rust Core, SI 6100, 3-Tier Justification, Multi-Flow, Prepress, ACID WAL Storage, Holy Name Guardian.
 
 7. **צינור זרימת העבודה (Pipeline with Progressive Disclosure):**
-   - 5 שלבי עימוד אינטראקטיביים עם פירוט טכני מתרחב בלחיצה.
+   * 5 שלבי עימוד אינטראקטיביים עם מפרט טכני מתרחב בלחיצה.
 
 8. **לוח בנצ'מרק ובדיקות אמת מאומתות:**
-   - נתונים אמיתיים מתוך ריפו ה-Rust (58/58 בדיקות עוברות, Clippy נקי, דטרמיניזם מלא, בדיקת עומס של 1,000 עמודים).
+   * נתונים אמיתיים מתוך ריפו ה-Rust (58/58 בדיקות עוברות, Clippy 0 אזהרות, דטרמיניזם ביט-אחר-ביט, עמידה במבחן עומס של 1,000 עמודים).
 
 ---
 
-## ♿ נגישות (WCAG 2.2 AA) וביצועים (Core Web Vitals)
+### ♿ נגישות (WCAG 2.2 AA) וביצועים (Core Web Vitals)
 
-- **מבנה סמנטי מלא:** שימוש בתגיות HTML5 סמנטיות (`header`, `nav`, `main`, `section`, `article`, `footer`).
-- **ניווט מקלדת מלא:** קישור דילוג לתוכן מרכזי (`.skip-link`), חיווי פוקוס ברור ובולט (`:focus-visible`), תמיכה מלאה במקשי חצים בסליידרים.
-- **הפחתת תנועה (Reduced Motion):** תמיכה בהעדפת מערכת הפעלה (`prefers-reduced-motion`) לצד מתג ידני עליון באתר הנשמר ב-`localStorage`.
-- **רשת עזר טיפוגרפית (Baseline Guides):** אפשרות להפעיל/לכבות שכבת גריד ועזרי מדידה בכל רחבי האתר.
-- **אפס תלויות כבדות (Zero External JS Bloat):** ביצועים מקסימליים ללא תקורת Frameworks, זמני תגובה תת-מילי-שנייתיים (INP &lt; 50ms, LCP &lt; 1.2s, CLS = 0).
-- **SEO & Metadata:** תגיות מטא מלאות, Open Graph, Twitter Cards, JSON-LD Schema.org, `sitemap.xml`, `robots.txt`, ו-`site.webmanifest`.
+* **ניווט מקלדת מלא:** קישור Skip Link, חיווי `:focus-visible` בולט, וסמנטיקת ARIA מלאה.
+* **הפחתת תנועה (Reduced Motion):** תמיכה בהעדפת מערכת הפעלה (`prefers-reduced-motion`) לצד מתג ידני עליון באתר הנשמר ב-`localStorage`.
+* **מתג רשת גריד טיפוגרפית:** אפשרות להפעיל/לכבות שכבת גריד ועזרי מדידה בכל רחבי האתר.
+* **אפס תלויות כבדות:** קוד Vanilla JS ו-CSS מודולרי ללא ספריות ענק (LCP $\le$ 1.2s, INP $\le$ 50ms, CLS = 0).
 
 ---
 
-## 📁 מבנה הפרויקט
+### 🚀 הרצה מקומית
 
-```
-atar לתוכנת עימוד/
-├── index.html                   # עמוד הבית הסמנטי והאינטראקטיבי
-├── site.webmanifest             # מניפסט אפליקציית רשת (PWA)
-├── robots.txt                   # הנחיות זחילה לרובוטי חיפוש
-├── sitemap.xml                  # מפת אתר תקנית
-├── README.md                    # תיעוד הפרויקט
-│
-└── assets/
-    ├── images/
-    │   ├── logo.jpg             # לוגו ומיתוג TypesetOK המקורי (ספר פתוח + OK)
-    │   └── favicon.svg          # אייקון וקטורי מותאם
-    │
-    ├── css/
-    │   ├── tokens.css           # משתני עיצוב (צבעים, טיפוגרפיה, מרווחים, צללים)
-    │   ├── reset.css            # ריסוט נגיש ובסיס RTL
-    │   ├── main.css             # גריד עימודי, תפריט דביק וסגנונות שלד
-    │   ├── components.css       # סגנונות לכל הרכיבים האינטראקטיביים והסדנה
-    │   └── a11y-motion.css      # נגישות, focus-visible, reduced motion והדפסה
-    │
-    └── js/
-        ├── main.js              # ניווט, התקדמות גלילה, נגישות, מודאלים וטוגלים
-        ├── hero-animation.js    # אנימציית טרנספורמציה במנוע העימוד
-        ├── playground.js        # לוגיקת סדנת העימוד האינטראקטיבית בזמן אמת
-        ├── before-after.js      # סליידר השוואת עימוד נגיש
-        └── workbench.js         # אינטראקציית חלון סביבת העבודה (TDM Inspector)
-```
-
----
-
-## 🚀 הרצה מקומית
-
-האתר הוא אתר סטטי מודרני עצמאי שאינו תלוי בשרת מיוחד או בבנייה מורכבת:
+האתר הוא אתר סטטי עצמאי שאינו דורש תהליך בנייה מורכב:
 
 ```bash
 # הרצה באמצעות שרת ה-HTTP המובנה של Python:
@@ -103,3 +84,71 @@ python -m http.server 8000
 # פתיחה בדפדפן:
 # http://localhost:8000
 ```
+
+---
+
+## 🇺🇸 English
+
+### 📖 About
+This repository contains the source code for the official website and interactive showcase of **TypesetOK (TOK)** — a modern, open-source Desktop Publishing (DTP) system written from the ground up in Rust for advanced Hebrew typography, sacred texts (Talmud, Mikraot Gedolot, Responsa), and massive 1,000+ page manuscripts.
+
+The site is designed under the **Editorial Technology** concept, turning the physical world of typography, baseline grids, and pre-press standards into an interactive, accessible digital surface.
+
+---
+
+### 🛠️ GitHub Actions CI & Pages Deployment
+
+* **Continuous Integration (`.github/workflows/ci.yml`):**
+  * Automated linting and tag well-formedness validation.
+  * Broken asset & link verification.
+  * CSS & JS syntax tree checks.
+* **Automated GitHub Pages Deployment (`.github/workflows/deploy-pages.yml`):**
+  * Automatically deploys on every push to `main`/`master`.
+  * Pre-configured with `.nojekyll` and custom `404.html`.
+
+---
+
+### 📁 Repository Structure
+
+```
+website/
+├── index.html                   # Semantic HTML5 Master Document
+├── 404.html                     # Custom Accessible 404 Page
+├── .nojekyll                    # Disables Jekyll processing on GitHub Pages
+├── site.webmanifest             # Web App Manifest
+├── robots.txt                   # Search Engine Crawler Directives
+├── sitemap.xml                  # Canonical XML Sitemap
+├── README.md                    # Dual-language Documentation
+│
+├── .github/
+│   └── workflows/
+│       ├── ci.yml               # Automated CI Validation Pipeline
+│       └── deploy-pages.yml     # Automated GitHub Pages Deployment
+│
+├── scripts/
+│   └── validate.py              # CI Quality & Integrity Checker
+│
+└── assets/
+    ├── images/
+    │   ├── logo.jpg             # TypesetOK Brand Logo (Open Book + OK)
+    │   └── favicon.svg          # Crisp Vector Favicon
+    ├── css/
+    │   ├── tokens.css           # Design Tokens (Colors, Typography, Spacing)
+    │   ├── reset.css            # Accessible RTL Reset
+    │   ├── main.css             # Editorial Grid & Layout Primitives
+    │   ├── components.css       # Interactive Modules & Demos
+    │   └── a11y-motion.css      # WCAG 2.2 AA & Reduced Motion Overrides
+    └── js/
+        ├── main.js              # Navigation, Observers & Modals
+        ├── hero-animation.js    # Living Specimen Pipeline Animation
+        ├── playground.js        # Interactive Typography Playground
+        ├── before-after.js      # Accessible Comparison Slider
+        └── workbench.js         # Desktop Workbench & TDM Inspector
+```
+
+---
+
+### 📄 License
+
+This repository and the TypesetOK project are licensed under the:
+**[TypesetOK Source-Available Non-Commercial Copyleft License (TOK-NCCL v1.0)](https://github.com/TypesetOK/typesetok/blob/main/LICENSE.md)**
